@@ -28,11 +28,9 @@ public class NX_Selection
         attributePropertiesBuilder1.DataType = AttributePropertiesBaseBuilder.DataTypeOptions.String;
 
         attributePropertiesBuilder1.Units = "MilliMeter";
-
-        NXObject[] objects2 = new NXObject[1];
-        objects2[0] = face1;
+        
         ObjectGeneralPropertiesBuilder objectGeneralPropertiesBuilder1 = default(ObjectGeneralPropertiesBuilder);
-        objectGeneralPropertiesBuilder1 = workPart.PropertiesManager.CreateObjectGeneralPropertiesBuilder(objects2);
+        objectGeneralPropertiesBuilder1 = workPart.PropertiesManager.CreateObjectGeneralPropertiesBuilder(objects1);
 
         SelectNXObjectList selectNXObjectList1 = default(SelectNXObjectList);
         selectNXObjectList1 = objectGeneralPropertiesBuilder1.SelectedObjects;
@@ -40,20 +38,8 @@ public class NX_Selection
         objectGeneralPropertiesBuilder1.NameLocationSpecified = false;
 
         objectGeneralPropertiesBuilder1.Index = 1;
-
-        NXObject[] objects3 = new NXObject[1];
-        objects3[0] = face1;
-        attributePropertiesBuilder1.SetAttributeObjects(objects3);
-
-        attributePropertiesBuilder1.Units = "MilliMeter";
-
-        attributePropertiesBuilder1.DateValue.DateItem.Day = DateItemBuilder.DayOfMonth.Day22;
-
-        attributePropertiesBuilder1.DateValue.DateItem.Month = DateItemBuilder.MonthOfYear.Jul;
-
-        attributePropertiesBuilder1.DateValue.DateItem.Year = "2017";
-
-        attributePropertiesBuilder1.DateValue.DateItem.Time = "00:00:00";
+        
+        attributePropertiesBuilder1.SetAttributeObjects(objects1);
 
         SelectNXObjectList selectNXObjectList2 = default(SelectNXObjectList);
         selectNXObjectList2 = objectGeneralPropertiesBuilder1.SelectedObjects;
@@ -61,10 +47,7 @@ public class NX_Selection
         attributePropertiesBuilder1.Title = "NS_FACE";
 
         attributePropertiesBuilder1.StringValue = "ANSYS_NS_Name";
-
-        Session.UndoMarkId markId2 = default(Session.UndoMarkId);
-        markId2 = theSession.SetUndoMark(Session.MarkVisibility.Visible, "Add New Attribute");
-
+        
         bool changed1 = false;
         changed1 = attributePropertiesBuilder1.CreateAttribute();
 
@@ -73,16 +56,6 @@ public class NX_Selection
         attributePropertiesBuilder1.IsArray = false;
 
         attributePropertiesBuilder1.StringValue = "";
-
-        attributePropertiesBuilder1.IsArray = false;
-
-        attributePropertiesBuilder1.IsArray = false;
-
-        attributePropertiesBuilder1.StringValue = "";
-
-        attributePropertiesBuilder1.IsArray = false;
-
-        attributePropertiesBuilder1.IsArray = false;
         
         NXObject nXObject1 = default(NXObject);
         nXObject1 = attributePropertiesBuilder1.Commit();
@@ -98,5 +71,10 @@ public class NX_Selection
         partSaveStatus1 = workPart.Save(BasePart.SaveComponents.True, BasePart.CloseAfterSave.False);
 
         partSaveStatus1.Dispose();
+    }
+
+    public static int GetUnloadOption(string dummy)
+    {
+        return NXOpen.UF.UFConstants.UF_UNLOAD_IMMEDIATELY;
     }
 }
