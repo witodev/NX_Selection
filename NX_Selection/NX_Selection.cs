@@ -1,6 +1,4 @@
-﻿using System;
-using NXOpen;
-using Snap;
+﻿using NXOpen;
 
 public class NX_Selection
 {
