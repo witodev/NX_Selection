@@ -6,7 +6,7 @@ public class NX_Selection
 {
     public static void Main(string[] args)
     {
-        SelectObject();
+        //SelectObject();
 
         Session theSession = Session.GetSession();
         Part workPart = theSession.Parts.Work;
@@ -20,10 +20,10 @@ public class NX_Selection
         objects1[0] = face1;
         AnsysNamedSelection(theSession, workPart, objects1, "NS_FACE");
 
-        PartSaveStatus partSaveStatus1 = default(PartSaveStatus);
-        partSaveStatus1 = workPart.Save(BasePart.SaveComponents.True, BasePart.CloseAfterSave.False);
+        //PartSaveStatus partSaveStatus1 = default(PartSaveStatus);
+        //partSaveStatus1 = workPart.Save(BasePart.SaveComponents.True, BasePart.CloseAfterSave.False);
 
-        partSaveStatus1.Dispose();
+        //partSaveStatus1.Dispose();
     }
 
     private static void SelectObject()
